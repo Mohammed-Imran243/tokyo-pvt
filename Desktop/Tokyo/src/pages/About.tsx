@@ -36,11 +36,9 @@ export function About() {
           <div className="tape absolute -top-3 left-10" />
 
           <div className="flex flex-col md:flex-row gap-6 sm:gap-8 items-center">
-            <img
-              src="/harry-hermione.png"
-              alt="Harry & Hermione"
-              className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl border border-warm-brown/30 object-cover shadow-md shrink-0 group-hover:scale-105 transition-transform"
-            />
+            <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl bg-scrapbook-bg/80 border border-warm-brown/30 flex items-center justify-center text-warm-gold font-serif text-3xl sm:text-4xl shadow-inner shrink-0 group-hover:scale-105 transition-transform">
+              H&H
+            </div>
 
             <div className="text-center md:text-left flex-1">
               <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
@@ -71,9 +69,9 @@ export function About() {
 
           <div className="flex flex-col md:flex-row-reverse gap-6 sm:gap-8 items-center">
             <img
-              src="/levi-mikasa.jpg"
+              src="/stickers/mikasa.png"
               alt="Levi & Mikasa"
-              className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl border border-warm-brown/30 object-cover shadow-md shrink-0 group-hover:scale-105 transition-transform"
+              className="w-24 h-24 sm:w-32 sm:h-32 rounded-2xl border border-warm-brown/30 object-contain p-2 bg-scrapbook-bg/80 shadow-md shrink-0 group-hover:scale-105 transition-transform"
             />
 
             <div className="text-center md:text-right flex-1">
