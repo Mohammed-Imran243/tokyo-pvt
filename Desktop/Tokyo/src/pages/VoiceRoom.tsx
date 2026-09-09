@@ -29,15 +29,17 @@ function CassetteCard({ note, index, currentlyPlayingId, setCurrentlyPlayingId }
   }, [currentlyPlayingId, note.id, isPlaying]);
 
   const togglePlay = () => {
-    if (!audioRef.current || hasError) return;
+    if (!audioRef.current) return;
 
     if (isPlaying) {
       audioRef.current.pause();
       setIsPlaying(false);
       setCurrentlyPlayingId(null);
     } else {
+      setHasError(false);
       audioRef.current.play().then(() => {
         setIsPlaying(true);
+        setHasError(false);
         setCurrentlyPlayingId(note.id);
       }).catch((err) => {
         console.warn('Audio playback error:', err);
@@ -167,7 +169,6 @@ function CassetteCard({ note, index, currentlyPlayingId, setCurrentlyPlayingId }
 
         <button
           onClick={togglePlay}
-          disabled={hasError}
           className={`px-4 py-2 rounded-xl border text-xs sm:text-sm font-sans font-medium flex items-center gap-2 transition-all ${
             isPlaying
               ? 'bg-blush text-scrapbook-bg border-blush font-bold shadow-md'
