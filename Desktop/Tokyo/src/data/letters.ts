@@ -5,6 +5,7 @@ export interface Letter {
   date: string;
   preview: string;
   content: string;
+  isSpecial?: boolean;
 }
 
 export const lettersData: Letter[] = [
@@ -49,7 +50,7 @@ Adhuvum adha enakkaaga nee pannumbodhu, adhu innum azhaga aaidum.
 Naan expect ae pannadha oru time-la en life-la vandha,
 ippo expiry aagaadha honey 🍯 maadhiri en heart-la stay aayita.
 
-Ni the en first love,friend,bestie,game partner yellma en life la memories nu onnu iruntha athula ni illama yathuma irukathu you give me so much to sit back and remember ni illama yathuvum aagi irukathu so yellathukuma ennoda thanks da bijju ,
+Ni the en first friend,bestie,game partner yellma en life la memories nu onnu iruntha athula ni illama yathuma irukathu you give me so much to sit back and remember ni illama yathuvum aagi irukathu so yellathukuma ennoda thanks da bijju ,
 
 Nee life-la enakku neraya vishayangal puriya vechurukka dude.
 Adhukkum romba thanks.
@@ -82,8 +83,8 @@ but whenever you open this, I hope you're smiling. 😏
 
 Idha en ways of showing love nu nenachikko.
 
-Enakku love na enna nu kooda theriyama irundha enna,
-adhula vizha vecha sooniya kaari nee. 😏
+// Enakku love na enna nu kooda theriyama irundha enna,
+// adhula vizha vecha sooniya kaari nee. 😏
 
 Life namma rendu perayum enga kondu pogum nu enakku theriyadhu.
 Namma same-ah iruppoma,
@@ -93,7 +94,7 @@ Aana onnu mattum maaradhu…
 
 Un mela irukkura en care.
 
-Na unna eppovume love pannitu iruppen .
+Na unna eppovume love(Anbu) pannitu iruppen .
 Un thoughts illama irukradhu enakku ippo yosikka kooda mudiyadhu,
 because somewhere along the way,
 nee en life-oda oru part aayita.
@@ -114,7 +115,7 @@ adha justify panna maaten.
 Purinjika try pannuven,
 better-ah irukka try pannuven.
 
-Unna love pandradhu enakku kashtam illa.
+Unna care pandradhu enakku kashtam illa.
 It's actually the easiest thing I've ever felt.
 And probably one of my favourite parts too.
 
@@ -129,8 +130,41 @@ That's all I ever wanted for you.
 
 No matter what…
 
-I'm here to love you. 💜
+I'm here to take care of you. 💜
 
  .`
+  },
+  {
+    id: "letter-final",
+    title: "A Letter I Never Want You To Forget",
+    category: "✨ One Last Letter",
+    date: "Happy Birthday",
+    preview: "You were the first person who taught me that friendship could feel like home...",
+    isSpecial: true,
+    content: `💌 Dear Tokyo,
+
+Sila peru namma life-la romba simple-ah dhaan varuvaanga… aana konjam konjama, namma memories-la oru periya part aayiduvaanga.
+
+Nee enakku appadi oru person.
+
+Random-ah pesinadhu, late-night talks, namma sandaigal,naama vaeliya ponathu, konjam annoying moments 😂 — idhellam serndhu paatha, ippo enakku romba special-aana memories ah irukku.
+
+Life namma rendu perayum enga kondu pogumnu enakku theriyadhu. Aana oru vishayam mattum sure…
+
+Unna meet pannadhu-ku naan genuinely happy.
+
+So, un birthday-la naan solla virumburadhu onnu dhaan:
+
+Nee nee-ah irundhadhukku thanks.
+Enakku ivlo laughs, chaos, memories kuduthadhukku thanks. ❤️
+Naraya puriya vachithukku thanks.
+
+Un life-oda indha pudhu year-la, nee wish panra ellame kidaikkanum. Neraya happiness, nalla health, peaceful days, and smile panna neraya reasons irukkanum.
+
+And please… same crazy Tokyo-va continue pannitu iru. 😂❤️
+
+Happy Birthday, Tokyo!
+
+— Unna meet pannadhu-ku romba happy-a irukkura oruthan 😏`
   }
-]
+];

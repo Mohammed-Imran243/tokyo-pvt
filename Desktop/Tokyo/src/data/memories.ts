@@ -4,8 +4,8 @@ export interface MemoryStats {
 }
 
 export const memoryStats: MemoryStats = {
-  photos: 18,
-  videos: 3,
+  photos: 9,
+  videos: 16,
 };
 
 export interface GalleryItem {
@@ -18,26 +18,32 @@ export interface GalleryItem {
 }
 
 export const galleryData: GalleryItem[] = [
-  { id: "img-1", type: "photo", url: "/memories/img-1.jpg", caption: "Special Moment ✨", date: "2026-08-13", description: "Special memory captured together." },
-  { id: "img-2", type: "photo", url: "/memories/img-2.jpg", caption: "Together 💜", date: "2026-08-13", description: "Moments we treasure." },
-  { id: "img-3", type: "photo", url: "/memories/img-3.jpg", caption: "Unforgettable 🎮", date: "2026-08-13", description: "Great memory." },
-  { id: "img-4", type: "photo", url: "/memories/img-4.jpg", caption: "Our Quiet Place 🌟", date: "2026-08-13", description: "Peaceful times." },
-  { id: "img-5", type: "photo", url: "/memories/img-5.jpg", caption: "Best Memories 💌", date: "2026-08-13", description: "Words and pictures close to heart." },
-  { id: "img-6", type: "photo", url: "/memories/img-6.jpg", caption: "Rooftop Nights 🌃", date: "2026-08-13", description: "Beautiful night." },
-  { id: "img-7", type: "photo", url: "/memories/img-7.jpg", caption: "Every Star a Memory ⭐", date: "2026-08-13", description: "Shining moments." },
-  { id: "img-8", type: "photo", url: "/memories/img-8.jpg", caption: "Victory Moment 🏆", date: "2026-08-13", description: "Unstoppable memory." },
-  { id: "img-9", type: "photo", url: "/memories/img-9.jpg", caption: "Late Night Talks 💬", date: "2026-08-13", description: "Late night laughter." },
-  { id: "img-10", type: "photo", url: "/memories/img-10.jpg", caption: "Lantern Sky 🏮", date: "2026-08-13", description: "Wishes in the sky." },
-  { id: "img-11", type: "photo", url: "/memories/img-11.jpg", caption: "Quiet Smiles 😊", date: "2026-08-13", description: "Pure joy." },
-  { id: "img-12", type: "photo", url: "/memories/img-12.jpg", caption: "Always Together 💖", date: "2026-08-13", description: "Forever memory." },
-  { id: "img-13", type: "photo", url: "/memories/img-13.jpg", caption: "Forever Memory 💫", date: "2026-08-13", description: "Always in heart." },
-  { id: "img-14", type: "photo", url: "/memories/img-14.jpg", caption: "Sweet Moments 🌸", date: "2026-08-13", description: "Sweet memory." },
-  { id: "img-15", type: "photo", url: "/memories/img-15.jpg", caption: "Golden Hour 🌅", date: "2026-08-13", description: "Golden memory." },
-  { id: "img-16", type: "photo", url: "/memories/img-16.jpg", caption: "Happy Memories 🎉", date: "2026-08-13", description: "Joyful moment." },
-  { id: "img-17", type: "photo", url: "/memories/img-17.jpg", caption: "Starry Night 🌙", date: "2026-08-13", description: "Under the stars." },
-  { id: "img-18", type: "photo", url: "/memories/img-18.jpg", caption: "With You Always 💕", date: "2026-08-13", description: "Always together." },
+  // REAL MEMORY PHOTOS from C:\Users\NICK\Downloads\tk i\star
+  { id: "star-img-1", type: "photo", url: "/memories/star/2nd meet.jpg", caption: "2nd meet", date: "2026" },
+  { id: "star-img-2", type: "photo", url: "/memories/star/Fav pic of us.jpg", caption: "Fav pic of us", date: "2026" },
+  { id: "star-img-3", type: "photo", url: "/memories/star/First meet.jpg", caption: "First meet", date: "2026" },
+  { id: "star-img-4", type: "photo", url: "/memories/star/First pic of our firrst personal meet.jpg", caption: "First pic of our firrst personal meet", date: "2026" },
+  { id: "star-img-5", type: "photo", url: "/memories/star/free fire recreation.jpg", caption: "free fire recreation", date: "2026" },
+  { id: "star-img-6", type: "photo", url: "/memories/star/Matchin jersey.jpg", caption: "Matchin jersey", date: "2026" },
+  { id: "star-img-7", type: "photo", url: "/memories/star/Snapchat-2030424706.jpg", caption: "Snapchat-2030424706", date: "2026" },
+  { id: "star-img-8", type: "photo", url: "/memories/star/Thug.jpg", caption: "Thug", date: "2026" },
+  { id: "star-img-9", type: "photo", url: "/memories/star/😁😁.jpg", caption: "😁😁", date: "2026" },
 
-  { id: "vid-1", type: "video", url: "/memories/vid-1.mp4", caption: "Memory Video 1 🎬", date: "2026-08-13", description: "Special video clip." },
-  { id: "vid-2", type: "video", url: "/memories/vid-2.mp4", caption: "Memory Video 2 🎥", date: "2026-08-13", description: "Special video moment." },
-  { id: "vid-3", type: "video", url: "/memories/vid-3.mp4", caption: "Memory Video 3 📹", date: "2026-08-13", description: "Unforgettable video clip." },
+  // REAL MEMORY VIDEOS from C:\Users\NICK\Downloads\tk i\star
+  { id: "star-vid-1", type: "video", url: "/memories/star/Cousin attrocities ah.mp4", caption: "Cousin attrocities ah", date: "2026" },
+  { id: "star-vid-2", type: "video", url: "/memories/star/ding ding.mp4", caption: "ding ding", date: "2026" },
+  { id: "star-vid-3", type: "video", url: "/memories/star/Emma emma kaekkutha 😏.mp4", caption: "Emma emma kaekkutha 😏", date: "2026" },
+  { id: "star-vid-4", type: "video", url: "/memories/star/Foodie.mp4", caption: "Foodie", date: "2026" },
+  { id: "star-vid-5", type: "video", url: "/memories/star/Happy Happy.mp4", caption: "Happy Happy", date: "2026" },
+  { id: "star-vid-6", type: "video", url: "/memories/star/I'M WATCHING 👀.mp4", caption: "I'M WATCHING 👀", date: "2026" },
+  { id: "star-vid-7", type: "video", url: "/memories/star/Intha kadhal vanthuvittal 🤭.mp4", caption: "Intha kadhal vanthuvittal 🤭", date: "2026" },
+  { id: "star-vid-8", type: "video", url: "/memories/star/Node.mp4", caption: "Node", date: "2026" },
+  { id: "star-vid-9", type: "video", url: "/memories/star/Po  pootha poogampol alaga.mp4", caption: "Po  pootha poogampol alaga", date: "2026" },
+  { id: "star-vid-10", type: "video", url: "/memories/star/Pookie.mp4", caption: "Pookie", date: "2026" },
+  { id: "star-vid-11", type: "video", url: "/memories/star/push up.mp4", caption: "push up", date: "2026" },
+  { id: "star-vid-12", type: "video", url: "/memories/star/Real mikasa stunt.mp4", caption: "Real mikasa stunt", date: "2026" },
+  { id: "star-vid-13", type: "video", url: "/memories/star/shy shy.mp4", caption: "shy shy", date: "2026" },
+  { id: "star-vid-14", type: "video", url: "/memories/star/Vaena macha vaena 😂.mp4", caption: "Vaena macha vaena 😂", date: "2026" },
+  { id: "star-vid-15", type: "video", url: "/memories/star/😅🤭.mp4", caption: "😅🤭", date: "2026" },
+  { id: "star-vid-16", type: "video", url: "/memories/star/🫣.mp4", caption: "🫣", date: "2026" },
 ];

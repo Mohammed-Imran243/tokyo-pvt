@@ -1,81 +1,101 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Mail } from 'lucide-react';
 import { lettersData } from '../data/letters';
 import { LetterCard } from '../components/ui/LetterCard';
+import { AnimeSticker } from '../components/AnimeSticker';
 
 export function Letters() {
-  const [activeCategory, setActiveCategory] = useState<string>('All Letters');
-  
-  const categories = useMemo(() => {
-    const cats = new Set(lettersData.map(l => l.category));
-    return ['All Letters', ...Array.from(cats)];
-  }, []);
+  const [searchParams] = useSearchParams();
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [autoOpenSpecial, setAutoOpenSpecial] = useState<boolean>(false);
 
-  const filteredLetters = useMemo(() => {
-    if (activeCategory === 'All Letters') return lettersData;
-    return lettersData.filter(l => l.category === activeCategory);
-  }, [activeCategory]);
+  useEffect(() => {
+    if (searchParams.get('special') === 'true') {
+      setAutoOpenSpecial(true);
+    }
+  }, [searchParams]);
+
+  const categories = ['All', ...Array.from(new Set(lettersData.map((l) => l.category)))];
+
+  const filteredLetters = selectedCategory === 'All'
+    ? lettersData
+    : lettersData.filter((l) => l.category === selectedCategory);
+
+  // Pre-calculated aesthetic rotations for envelope scrapbook feel
+  const rotations = [-2, 1.5, -1, 2, -1.5];
 
   return (
-    <section id="letters" className="min-h-screen py-12 px-6 md:py-24 max-w-7xl mx-auto">
-      <motion.div 
+    <div className="py-8 md:py-12 max-w-5xl mx-auto px-4">
+      {/* Header */}
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        className="text-center mb-12 md:mb-20"
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center mb-8 md:mb-12 relative"
       >
-        <h1 className="text-4xl md:text-5xl font-serif text-parchment mb-4">Letters ✨</h1>
-        <p className="text-soft-lavender/70 text-lg max-w-2xl mx-auto">
-          "Some words are too special to be said, so I write them here."
+        <span className="text-xs font-sans tracking-widest uppercase text-blush block mb-2 font-medium">
+          Words from the heart
+        </span>
+
+        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-cream mb-3">
+          Envelopes & Letters <Mail size={32} className="inline text-blush" />
+        </h1>
+
+        <p className="font-handwriting text-xl sm:text-2xl text-cream/60 max-w-md mx-auto">
+          "Some feelings are better written than spoken."
         </p>
       </motion.div>
 
-      {/* Category Filter */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2 }}
-        className="flex flex-wrap justify-center gap-3 mb-12"
-      >
+      {/* Category Pills */}
+      <div className="flex items-center justify-center gap-2 flex-wrap mb-10 relative">
+        <div className="absolute -top-5 right-2 sm:right-10 pointer-events-none opacity-85">
+          <AnimeSticker sectionKey="letters-category-corner" size={46} animation="peek" />
+        </div>
         {categories.map((category) => (
           <button
             key={category}
-            onClick={() => setActiveCategory(category)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-              activeCategory === category 
-                ? 'bg-warm-gold/20 text-warm-gold border border-warm-gold/50 shadow-[0_0_15px_rgba(212,175,55,0.15)]' 
-                : 'bg-white/5 text-soft-lavender/70 border border-white/5 hover:bg-white/10 hover:text-white'
+            onClick={() => setSelectedCategory(category)}
+            className={`px-4 py-2 rounded-full text-xs sm:text-sm font-sans font-medium transition-all duration-200 ${
+              selectedCategory === category
+                ? 'bg-blush text-scrapbook-bg shadow-md font-semibold'
+                : 'paper-texture text-cream/60 hover:text-cream border border-warm-brown/20'
             }`}
           >
             {category}
           </button>
         ))}
-      </motion.div>
+      </div>
 
-      {/* Letters Grid */}
-      <motion.div 
-        layout
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-      >
-        {filteredLetters.map((letter, index) => (
-          <motion.div
-            layout
-            key={letter.id}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.05, duration: 0.4 }}
-          >
-            <LetterCard letter={letter} />
-          </motion.div>
-        ))}
-        {filteredLetters.length === 0 && (
-          <div className="col-span-full py-20 text-center text-soft-lavender/50">
-            No letters found in this category.
-          </div>
-        )}
-      </motion.div>
-    </section>
+      {/* Letters Envelope Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        {filteredLetters.map((letter, index) => {
+          const isSpecialParam = autoOpenSpecial && (letter.isSpecial || letter.id === 'letter-final');
+          const rot = rotations[index % rotations.length];
+
+          return (
+            <motion.div
+              key={letter.id}
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <LetterCard
+                letter={letter}
+                autoOpen={isSpecialParam}
+                rotationAngle={rot}
+              />
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* Bottom Note */}
+      <div className="text-center mt-16 pt-8 border-t border-warm-brown/15">
+        <p className="font-handwriting text-xl text-cream/40">
+          Click any envelope to read its letter ♡
+        </p>
+      </div>
+    </div>
   );
 }

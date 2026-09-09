@@ -1,94 +1,177 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Heart, Mail, Image as ImageIcon, Mic } from 'lucide-react';
+import { NamesGame } from '../components/NamesGame';
+import { AnimeSticker } from '../components/AnimeSticker';
 
 export function Home() {
-  const scrollToJourney = () => {
-    const el = document.getElementById('journey');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <section id="home" className="min-h-screen flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
-      
-      {/* Starry Night Sky Elements */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-[10%] left-[15%] w-1 h-1 bg-white rounded-full animate-twinkle opacity-70"></div>
-        <div className="absolute top-[30%] right-[25%] w-1.5 h-1.5 bg-warm-gold rounded-full animate-twinkle opacity-90" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-[50%] left-[45%] w-1 h-1 bg-white rounded-full animate-twinkle opacity-50" style={{ animationDelay: '2.5s' }}></div>
-        <div className="absolute bottom-[20%] right-[15%] w-2 h-2 bg-subtle-pink rounded-full animate-twinkle opacity-60" style={{ animationDelay: '0.5s' }}></div>
-        <div className="absolute top-[70%] left-[10%] w-1 h-1 bg-white rounded-full animate-twinkle opacity-40" style={{ animationDelay: '3s' }}></div>
-        <div className="absolute top-[15%] right-[40%] w-1.5 h-1.5 bg-warm-gold rounded-full animate-twinkle opacity-60" style={{ animationDelay: '1.5s' }}></div>
-        <div className="absolute bottom-[40%] right-[30%] w-1 h-1 bg-white rounded-full animate-twinkle opacity-80" style={{ animationDelay: '4s' }}></div>
-      </div>
-
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        className="z-10 flex flex-col items-center max-w-2xl w-full"
+    <div className="py-8 md:py-12 max-w-5xl mx-auto px-4">
+      {/* Header Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 25 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-10 md:mb-14 relative"
       >
-        
-        <motion.div 
-          initial={{ scale: 0.8, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 2, delay: 0.5 }}
-          className="mb-8 relative"
-        >
-          <div className="w-48 h-48 md:w-64 md:h-64 rounded-full border border-white/10 bg-gradient-to-b from-indigo-900/30 to-midnight flex items-center justify-center overflow-hidden shadow-[0_0_50px_rgba(100,50,200,0.15)] relative">
-             <div className="absolute bottom-0 w-full h-[60%] bg-midnight rounded-t-[100px] opacity-90 border-t border-white/5 flex items-end justify-center px-4">
-                <div className="w-12 h-24 bg-black rounded-t-full mx-1 opacity-80" />
-                <div className="w-10 h-20 bg-black rounded-t-full mx-1 opacity-80" />
-             </div>
-             <div className="absolute top-8 right-10 w-12 h-12 rounded-full bg-parchment shadow-[0_0_20px_#fdf5e6] opacity-80" />
-          </div>
-        </motion.div>
+        <span className="text-xs sm:text-sm font-sans tracking-widest uppercase text-blush block mb-2 font-medium">
+          A personal world made for you
+        </span>
 
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-parchment mb-4 tracking-wide font-medium drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-          Harry & Hermione <span className="text-warm-gold">♡</span>
+        <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl text-cream tracking-wide mb-3 font-semibold">
+          For Kullachi <span className="text-blush inline-block animate-pulse">♡</span>
         </h1>
 
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 1.5, duration: 1.5 }}
-          className="font-script text-3xl md:text-4xl text-subtle-pink mb-10 transform -rotate-2"
-        >
-          <p className="mb-2">"After all this time?"</p>
-          <p className="ml-12 text-warm-gold text-4xl md:text-5xl">"Always."</p>
-        </motion.div>
+        <p className="font-handwriting text-xl sm:text-2xl md:text-3xl text-blush-light/80 italic mb-4">
+          "my safe place, always."
+        </p>
 
-        <motion.p 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 2, duration: 1.5 }}
-          className="text-soft-lavender/80 text-lg md:text-xl font-light leading-relaxed mb-12 max-w-lg mx-auto"
-        >
-          A private space for our memories, our bond and everything we don't always know how to say.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 2.5, duration: 1 }}
-        >
-          <button 
-            onClick={scrollToJourney}
-            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/5 hover:bg-white/10 text-parchment font-medium rounded-full overflow-hidden transition-all duration-500 border border-white/10 hover:border-warm-gold/50 shadow-[0_0_20px_rgba(0,0,0,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] backdrop-blur-sm"
-          >
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
-            <span className="relative text-lg tracking-wide flex items-center gap-2">
-              Enter Our World <Sparkles size={18} className="text-warm-gold animate-pulse" />
-            </span>
-          </button>
-        </motion.div>
-
+        <p className="text-cream/60 text-sm sm:text-base font-sans max-w-lg mx-auto leading-relaxed">
+          A private place for our memories, our bond, and everything we don't always know how to say.
+        </p>
       </motion.div>
-    </section>
+
+      {/* Central Polaroid & Memory Scrapbook Composition */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.9, delay: 0.2 }}
+        className="relative mb-16 md:mb-24 max-w-2xl mx-auto"
+      >
+        {/* Decorative background tape / stickers */}
+        <div className="absolute -top-4 left-10 z-20 hidden sm:block">
+          <div className="w-24 h-6 bg-cream/20 border border-cream/10 -rotate-6 backdrop-blur-xs" />
+        </div>
+        <div className="absolute -bottom-4 right-10 z-20 hidden sm:block">
+          <div className="w-24 h-6 bg-blush/20 border border-blush/10 rotate-3 backdrop-blur-xs" />
+        </div>
+
+        {/* Main Centerpiece Polaroid */}
+        <div className="relative z-10 flex flex-col items-center">
+          <div className="polaroid rounded-sm transform -rotate-1 hover:rotate-0 transition-transform duration-500 max-w-sm sm:max-w-md w-full relative">
+            {/* Sticker peeking from behind top-right edge of centerpiece Polaroid */}
+            <div className="absolute -top-6 -right-5 sm:-top-8 sm:-right-7 z-20 pointer-events-none">
+              <AnimeSticker sectionKey="home-polaroid-top-right" size={58} animation="peek" />
+            </div>
+
+            <div className="relative aspect-[4/3] overflow-hidden bg-scrapbook-bg rounded-xs">
+              <img
+                src="/memories/star/Fav pic of us.jpg"
+                alt="Kullachi memory"
+                className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
+                style={{ objectPosition: 'center 25%' }}
+              />
+              <div className="absolute top-2 right-2 bg-scrapbook-bg/70 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-sans text-cream/90 flex items-center gap-1 border border-cream/10">
+                <Heart size={12} className="text-blush fill-blush" /> Memory #1
+              </div>
+            </div>
+            <p className="polaroid-caption text-xl sm:text-2xl mt-3">
+              You make ordinary days feel special. ♡
+            </p>
+          </div>
+        </div>
+
+        {/* Accent Polaroid (offset on desktop) */}
+        <div className="hidden md:block absolute -top-6 -right-12 z-0">
+          <div className="polaroid w-48 rounded-sm transform rotate-12 opacity-85 hover:opacity-100 hover:rotate-6 transition-all duration-300 relative">
+            {/* Sticker peeking behind top corner of right accent polaroid */}
+            <div className="absolute -top-5 -right-4 z-20 pointer-events-none">
+              <AnimeSticker sectionKey="home-polaroid-accent-right" size={48} animation="bounce" />
+            </div>
+            <div className="aspect-[4/3] overflow-hidden bg-scrapbook-bg rounded-xs">
+              <img
+                src="/memories/star/First meet.jpg"
+                alt="Special moment"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <p className="polaroid-caption text-sm mt-1">Always with you ✨</p>
+          </div>
+        </div>
+
+        {/* Left Accent Polaroid */}
+        <div className="hidden md:block absolute -bottom-8 -left-12 z-0">
+          <div className="polaroid w-48 rounded-sm transform -rotate-12 opacity-85 hover:opacity-100 hover:-rotate-6 transition-all duration-300 relative">
+            {/* Sticker peeking behind bottom-left corner of left accent polaroid */}
+            <div className="absolute -bottom-5 -left-5 z-20 pointer-events-none">
+              <AnimeSticker sectionKey="home-polaroid-accent-left" size={52} animation="idle" />
+            </div>
+            <div className="aspect-[4/3] overflow-hidden bg-scrapbook-bg rounded-xs">
+              <img
+                src="/memories/star/2nd meet.jpg"
+                alt="Favorite place"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <p className="polaroid-caption text-sm mt-1">Our little world 🌙</p>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Quick Navigation Cards */}
+      <div className="mb-16 md:mb-20">
+        <div className="text-center mb-6">
+          <span className="text-xs font-sans tracking-widest uppercase text-cream/40">Quick Access</span>
+          <h2 className="font-serif text-2xl sm:text-3xl text-cream">Explore Our Scrapbook</h2>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+          <Link
+            to="/letters"
+            className="paper-texture p-4 rounded-xl border border-warm-brown/20 hover:border-blush/40 flex flex-col items-center text-center group transition-all duration-300 hover:-translate-y-1"
+          >
+            <div className="p-3 rounded-full bg-blush/10 text-blush mb-2 group-hover:scale-110 transition-transform">
+              <Mail size={20} />
+            </div>
+            <span className="font-serif text-base text-cream group-hover:text-blush">Letters</span>
+            <span className="text-[11px] font-sans text-cream/40 mt-0.5">Physical Envelopes</span>
+          </Link>
+
+          <Link
+            to="/memories"
+            className="paper-texture p-4 rounded-xl border border-warm-brown/20 hover:border-blush/40 flex flex-col items-center text-center group transition-all duration-300 hover:-translate-y-1"
+          >
+            <div className="p-3 rounded-full bg-warm-gold/10 text-warm-gold mb-2 group-hover:scale-110 transition-transform">
+              <ImageIcon size={20} />
+            </div>
+            <span className="font-serif text-base text-cream group-hover:text-warm-gold">Memories</span>
+            <span className="text-[11px] font-sans text-cream/40 mt-0.5">25 Photos & Videos</span>
+          </Link>
+
+          <Link
+            to="/voice"
+            className="paper-texture p-4 rounded-xl border border-warm-brown/20 hover:border-blush/40 flex flex-col items-center text-center group transition-all duration-300 hover:-translate-y-1"
+          >
+            <div className="p-3 rounded-full bg-dusty-lavender/10 text-dusty-lavender mb-2 group-hover:scale-110 transition-transform">
+              <Mic size={20} />
+            </div>
+            <span className="font-serif text-base text-cream group-hover:text-dusty-lavender">Voice</span>
+            <span className="text-[11px] font-sans text-cream/40 mt-0.5">Cassette Tapes</span>
+          </Link>
+
+          <Link
+            to="/night-sky"
+            className="paper-texture p-4 rounded-xl border border-warm-brown/20 hover:border-blush/40 flex flex-col items-center text-center group transition-all duration-300 hover:-translate-y-1"
+          >
+            <div className="p-3 rounded-full bg-cream/10 text-cream mb-2 group-hover:scale-110 transition-transform">
+              <Sparkles size={20} />
+            </div>
+            <span className="font-serif text-base text-cream group-hover:text-blush">Night Sky</span>
+            <span className="text-[11px] font-sans text-cream/40 mt-0.5">25 Special Stars</span>
+          </Link>
+        </div>
+      </div>
+
+      {/* Interactive Names Game Section (Replaces Old Milestones Section) */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-12 border-t border-warm-brown/20 pt-12"
+      >
+        <NamesGame />
+      </motion.div>
+    </div>
   );
 }
+
