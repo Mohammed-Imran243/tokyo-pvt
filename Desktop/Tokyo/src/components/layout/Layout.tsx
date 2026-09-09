@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Home, Compass, Mail, Image as ImageIcon, Mic, Sparkles, Lock, Heart, Menu, X, Feather } from 'lucide-react';
+import { useState } from 'react';
+import { Home, Compass, Mail, Image as ImageIcon, Mic, Sparkles, Lock, Heart, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -72,9 +72,9 @@ export function Layout({ children, activeSection }: LayoutProps) {
 
       {/* Mobile Top Bar */}
       <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-midnight/80 backdrop-blur-md z-50 flex items-center justify-between px-6 border-b border-white/5">
-        <button onClick={handleFeatherClick} className="flex items-center gap-2">
-          <Feather className="text-warm-gold" size={20} />
-          <span className="font-serif text-xl text-parchment tracking-widest">H&H</span>
+        <button onClick={handleFeatherClick} className="flex items-center gap-2.5">
+          <img src="/logo.svg" alt="Tokyo Logo" className="w-8 h-8 rounded-full shadow-md" />
+          <span className="font-serif text-xl text-parchment tracking-widest font-medium">Tokyo ♡</span>
         </button>
         <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 -mr-2 text-soft-lavender hover:text-white transition-colors">
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -107,7 +107,7 @@ export function Layout({ children, activeSection }: LayoutProps) {
             </div>
 
             <div className="mt-auto pt-10 pb-6 text-center text-xs text-soft-lavender/40 font-serif">
-              For Tokyo, from Harry
+              For Tokyo ♡
             </div>
           </motion.div>
         )}
@@ -116,8 +116,8 @@ export function Layout({ children, activeSection }: LayoutProps) {
       {/* Desktop Sidebar */}
       <aside className="hidden md:flex flex-col w-72 bg-midnight/50 backdrop-blur-md border-r border-white/5 z-30 fixed top-0 left-0 h-screen overflow-y-auto custom-scrollbar">
         <div className="p-10 flex flex-col items-center">
-          <button onClick={handleFeatherClick} className="w-16 h-16 mb-6 rounded-full bg-gradient-to-tr from-warm-gold/20 to-deep-purple flex items-center justify-center border border-warm-gold/30 shadow-[0_0_30px_rgba(212,175,55,0.2)] hover:scale-105 transition-transform">
-            <Sparkles className="text-warm-gold" size={28} />
+          <button onClick={handleFeatherClick} className="w-20 h-20 mb-4 rounded-full bg-gradient-to-tr from-warm-gold/20 to-deep-purple flex items-center justify-center border border-warm-gold/30 shadow-[0_0_30px_rgba(212,175,55,0.25)] hover:scale-105 transition-transform p-1">
+            <img src="/logo.svg" alt="Tokyo Logo" className="w-full h-full object-contain rounded-full" />
           </button>
           <h2 className="font-serif text-2xl font-semibold text-parchment text-center tracking-wide">
             Our Memory<br />Universe

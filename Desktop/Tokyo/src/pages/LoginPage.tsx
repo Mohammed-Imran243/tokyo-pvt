@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Lock, Heart, Moon } from 'lucide-react';
+import { Heart, Moon } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { AnimeSticker } from '../components/AnimeSticker';
 
@@ -158,14 +158,14 @@ export function LoginPage() {
             <AnimeSticker sectionKey="login-card-br" size={52} animation="idle" />
           </div>
 
-          {/* Lock icon */}
+          {/* Custom Brand Logo */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="w-16 h-16 mx-auto mb-6 rounded-full bg-scrapbook-bg/60 border border-warm-brown/30 flex items-center justify-center"
+            className="w-20 h-20 mx-auto mb-5 rounded-full bg-gradient-to-tr from-warm-brown/30 to-deep-purple/40 border border-warm-gold/40 flex items-center justify-center p-1.5 shadow-[0_0_25px_rgba(212,175,55,0.2)]"
           >
-            <Lock size={24} className="text-blush" />
+            <img src="/logo.svg" alt="Tokyo Logo" className="w-full h-full object-contain rounded-full" />
           </motion.div>
 
           {/* Welcome text */}
