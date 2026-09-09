@@ -7,16 +7,16 @@ export interface VoiceNote {
 }
 
 export const voiceNotesData: VoiceNote[] = [
-  { id: "vn-1", title: "Appreciation", audioUrl: "/voice/appreciation.opus", format: "OPUS" },
-  { id: "vn-2", title: "Voice Note", audioUrl: "/voice/AUD-20251018-WA0024.mp3", format: "MP3" },
-  { id: "vn-3", title: "Dare", audioUrl: "/voice/Dare.aac", format: "AAC" },
-  { id: "vn-4", title: "Declaration", audioUrl: "/voice/Declaration .opus", format: "OPUS" },
-  { id: "vn-5", title: "Demands", audioUrl: "/voice/demands.opus", format: "OPUS" },
-  { id: "vn-6", title: "Hate U", audioUrl: "/voice/hate u.opus", format: "OPUS" },
-  { id: "vn-7", title: "Hindi Song", audioUrl: "/voice/Hindi Song.mp3", format: "MP3" },
-  { id: "vn-8", title: "Humm", audioUrl: "/voice/Humm.opus", format: "OPUS" },
-  { id: "vn-9", title: "Order", audioUrl: "/voice/order.opus", format: "OPUS" },
-  { id: "vn-10", title: "Rain", audioUrl: "/voice/rain.opus", format: "OPUS" },
-  { id: "vn-11", title: "Ulagam", audioUrl: "/voice/ulagam_POOhnWzM.ogg", format: "OGG" },
+  { id: "vn-1", title: "Appreciation", audioUrl: "/voice/appreciation.mp3", format: "MP3" },
+  { id: "vn-2", title: "Voice Note", audioUrl: "/voice/aud-20251018-wa0024.mp3", format: "MP3" },
+  { id: "vn-3", title: "Dare", audioUrl: "/voice/dare.mp3", format: "MP3" },
+  { id: "vn-4", title: "Declaration", audioUrl: "/voice/declaration.mp3", format: "MP3" },
+  { id: "vn-5", title: "Demands", audioUrl: "/voice/demands.mp3", format: "MP3" },
+  { id: "vn-6", title: "Hate U", audioUrl: "/voice/hate-u.mp3", format: "MP3" },
+  { id: "vn-7", title: "Hindi Song", audioUrl: "/voice/hindi-song.mp3", format: "MP3" },
+  { id: "vn-8", title: "Humm", audioUrl: "/voice/humm.mp3", format: "MP3" },
+  { id: "vn-9", title: "Order", audioUrl: "/voice/order.mp3", format: "MP3" },
+  { id: "vn-10", title: "Rain", audioUrl: "/voice/rain.mp3", format: "MP3" },
+  { id: "vn-11", title: "Ulagam", audioUrl: "/voice/ulagam_poohnwzm.mp3", format: "MP3" },
 ];
 

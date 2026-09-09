@@ -74,7 +74,7 @@ function CassetteCard({ note, index, currentlyPlayingId, setCurrentlyPlayingId }
     >
       <audio
         ref={audioRef}
-        src={note.audioUrl}
+        src={encodeURI(note.audioUrl)}
         preload="metadata"
         onLoadedMetadata={() => {
           if (audioRef.current) {
