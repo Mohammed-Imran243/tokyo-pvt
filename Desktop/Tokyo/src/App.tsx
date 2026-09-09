@@ -1,53 +1,78 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import { Layout } from './components/layout/Layout';
+import { LoginPage } from './pages/LoginPage';
 import { Home } from './pages/Home';
-import { Journey } from './pages/Journey';
 import { Letters } from './pages/Letters';
 import { Memories } from './pages/Memories';
 import { VoiceRoom } from './pages/VoiceRoom';
 import { NightSky } from './pages/NightSky';
-import { FutureVault } from './pages/FutureVault';
+
 import { About } from './pages/About';
-import { FinalLetter } from './pages/FinalLetter';
+import { MoreMenu } from './pages/MoreMenu';
 
-const sectionIds = ['home', 'journey', 'letters', 'memories', 'voice-room', 'night-sky', 'future-vault', 'about', 'final-letter'];
+function ProtectedRoute({ children }: { children: React.ReactNode }) {
+  const { isAuthenticated } = useAuth();
+  const location = useLocation();
 
-function App() {
-  const [activeSection, setActiveSection] = useState('home');
+  if (!isAuthenticated) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        }
-      },
-      { threshold: 0.3 }
-    );
+  return <>{children}</>;
+}
 
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+function PublicOnlyRoute({ children }: { children: React.ReactNode }) {
+  const { isAuthenticated } = useAuth();
 
-    return () => observer.disconnect();
-  }, []);
+  if (isAuthenticated) {
+    return <Navigate to="/" replace />;
+  }
 
+  return <>{children}</>;
+}
+
+function AppRoutes() {
   return (
-    <Layout activeSection={activeSection}>
-      <Home />
-      <Journey />
-      <Letters />
-      <Memories />
-      <VoiceRoom />
-      <NightSky />
-      <FutureVault />
-      <About />
-      <FinalLetter />
-    </Layout>
+    <Routes>
+      <Route
+        path="/login"
+        element={
+          <PublicOnlyRoute>
+            <LoginPage />
+          </PublicOnlyRoute>
+        }
+      />
+
+      <Route
+        element={
+          <ProtectedRoute>
+            <Layout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="/" element={<Home />} />
+        <Route path="/letters" element={<Letters />} />
+        <Route path="/memories" element={<Memories />} />
+        <Route path="/voice" element={<VoiceRoom />} />
+        <Route path="/night-sky" element={<NightSky />} />
+
+        <Route path="/about" element={<About />} />
+        <Route path="/more" element={<MoreMenu />} />
+      </Route>
+
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AuthProvider>
+        <AppRoutes />
+      </AuthProvider>
+    </BrowserRouter>
+  );
+}
