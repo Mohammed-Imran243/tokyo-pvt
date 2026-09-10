@@ -10,6 +10,7 @@ export function Memories() {
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState<number>(1);
   const [fullscreenItem, setFullscreenItem] = useState<any>(null);
+  const [mediaError, setMediaError] = useState(false);
   const touchStartX = useRef<number | null>(null);
 
   // Separate photos (41) and videos (10) strictly
@@ -23,6 +24,7 @@ export function Memories() {
 
   const handleNext = () => {
     if (currentPage < totalPages - 1) {
+      setMediaError(false);
       setDirection(1);
       setCurrentPage((prev) => prev + 1);
     }
@@ -30,6 +32,7 @@ export function Memories() {
 
   const handlePrev = () => {
     if (currentPage > 0) {
+      setMediaError(false);
       setDirection(-1);
       setCurrentPage((prev) => prev - 1);
     }
@@ -37,6 +40,7 @@ export function Memories() {
 
   const switchMode = (mode: 'photos' | 'videos') => {
     if (mode !== activeMode) {
+      setMediaError(false);
       setActiveMode(mode);
       setCurrentPage(0);
       setDirection(1);
@@ -265,15 +269,32 @@ export function Memories() {
                   className="w-full h-full flex items-center justify-center relative z-0 p-1"
                 >
                   {activeMode === 'videos' ? (
-                    /* VIDEO PAGE — CLEAN DISPLAY WITHOUT TEXT METADATA */
+                    /* VIDEO PAGE — CLEAN DISPLAY WITH ERROR FALLBACK */
                     <div className="w-full h-full flex items-center justify-center relative">
-                      <video
-                        src={currentItem.url}
-                        controls
-                        playsInline
-                        preload="metadata"
-                        className="max-w-full max-h-full object-contain rounded-lg shadow-lg border border-amber-950/30"
-                      />
+                      {mediaError ? (
+                        <div className="flex flex-col items-center justify-center p-6 text-center bg-amber-950/60 rounded-xl border border-amber-500/40 text-amber-100 space-y-3 max-w-sm">
+                          <Film className="w-10 h-10 text-amber-400 opacity-70 animate-pulse" />
+                          <p className="font-serif text-sm">Unable to stream video in browser</p>
+                          <a
+                            href={currentItem.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-1.5 rounded-full bg-amber-400 text-amber-950 font-serif text-xs font-bold hover:bg-amber-300 transition-colors shadow"
+                          >
+                            Open Direct Video ↗
+                          </a>
+                        </div>
+                      ) : (
+                        <video
+                          key={currentItem.url}
+                          src={currentItem.url}
+                          controls
+                          playsInline
+                          preload="metadata"
+                          onError={() => setMediaError(true)}
+                          className="max-w-full max-h-full object-contain rounded-lg shadow-lg border border-amber-950/30"
+                        />
+                      )}
                     </div>
                   ) : (
                     /* PHOTO PAGE — CLEAN DISPLAY WITHOUT TEXT METADATA */

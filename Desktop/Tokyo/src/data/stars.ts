@@ -52,7 +52,7 @@ export const starsData: StarMemory[] = starCoordinates.map((coord, i) => {
     title: fileName,
     date: memory?.date || '2026',
     description: memory?.description || 'Some memories deserve their own star. ♡',
-    image: memory?.url || `/memories/star/First meet.jpg`,
+    image: memory?.url || `/memories/star/first-meet.jpg`,
     x: coord.x,
     y: coord.y,
     size: coord.size,

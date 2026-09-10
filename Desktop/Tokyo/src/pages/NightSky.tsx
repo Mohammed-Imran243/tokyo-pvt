@@ -6,7 +6,13 @@ import { AnimeSticker } from '../components/AnimeSticker';
 
 export function NightSky() {
   const [selectedStar, setSelectedStar] = useState<StarMemory | null>(null);
+  const [videoError, setVideoError] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleSelectStar = (star: StarMemory | null) => {
+    setVideoError(false);
+    setSelectedStar(star);
+  };
 
   // Memoize twinkle properties to avoid random re-renders
   const starsWithDelays = useMemo(() => {
@@ -80,7 +86,7 @@ export function NightSky() {
           return (
             <button
               key={star.id}
-              onClick={() => setSelectedStar(star)}
+              onClick={() => handleSelectStar(star)}
               className="absolute group z-10 transform -translate-x-1/2 -translate-y-1/2 p-3 sm:p-4 touch-manipulation min-w-[40px] min-h-[40px] flex items-center justify-center"
               style={{ left: `${star.x}%`, top: `${star.y}%` }}
               aria-label={`View memory: ${star.title}`}
@@ -127,7 +133,7 @@ export function NightSky() {
           <div className="fixed inset-0 z-[100] flex items-center justify-center bg-scrapbook-bg/95 backdrop-blur-xl p-2 sm:p-6 overflow-hidden">
             {/* Top Right High-Visibility Close Button */}
             <button
-              onClick={() => setSelectedStar(null)}
+              onClick={() => handleSelectStar(null)}
               className="absolute top-3 right-3 sm:top-5 sm:right-5 z-[110] px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-scrapbook-card/90 hover:bg-blush/20 text-cream border border-blush/40 shadow-xl flex items-center gap-1.5 text-xs sm:text-sm font-sans font-medium transition-all active:scale-95"
               aria-label="Close star memory"
             >
@@ -138,7 +144,7 @@ export function NightSky() {
             {/* Backdrop click to close */}
             <div
               className="absolute inset-0 z-0"
-              onClick={() => setSelectedStar(null)}
+              onClick={() => handleSelectStar(null)}
             />
 
             <motion.div
@@ -156,12 +162,28 @@ export function NightSky() {
                 {/* 1. COMPLETE IMAGE / VIDEO FITS HERE */}
                 <div className="w-full max-h-[46vh] sm:max-h-[54vh] flex items-center justify-center bg-black/30 rounded-lg p-1.5 mb-3 relative overflow-hidden shadow-inner">
                   {selectedStar.image.endsWith('.mp4') || selectedStar.image.endsWith('.webm') || selectedStar.image.endsWith('.mov') ? (
-                    <video
-                      src={selectedStar.image}
-                      controls
-                      playsInline
-                      className="max-w-full max-h-[44vh] sm:max-h-[50vh] w-auto h-auto object-contain rounded-md shadow-md mx-auto"
-                    />
+                    videoError ? (
+                      <div className="flex flex-col items-center justify-center p-4 text-center bg-black/40 rounded-lg text-cream/90 space-y-2">
+                        <p className="font-serif text-xs">Unable to load video directly in browser</p>
+                        <a
+                          href={selectedStar.image}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-3 py-1 rounded-full bg-blush text-gray-900 font-sans text-xs font-semibold hover:bg-blush/80 transition-colors shadow"
+                        >
+                          Open Video Link ↗
+                        </a>
+                      </div>
+                    ) : (
+                      <video
+                        key={selectedStar.image}
+                        src={selectedStar.image}
+                        controls
+                        playsInline
+                        onError={() => setVideoError(true)}
+                        className="max-w-full max-h-[44vh] sm:max-h-[50vh] w-auto h-auto object-contain rounded-md shadow-md mx-auto"
+                      />
+                    )
                   ) : (
                     <img
                       src={selectedStar.image}
@@ -198,7 +220,7 @@ export function NightSky() {
 
                   {/* Close Action Button */}
                   <button
-                    onClick={() => setSelectedStar(null)}
+                    onClick={() => handleSelectStar(null)}
                     className="w-full py-2.5 px-4 bg-gray-900 text-cream text-xs sm:text-sm font-sans rounded-xl flex items-center justify-center gap-2 hover:bg-gray-800 transition-all active:scale-95 shadow-md"
                   >
                     <X size={16} className="text-blush" />

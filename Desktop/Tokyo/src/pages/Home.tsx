@@ -56,7 +56,7 @@ export function Home() {
 
             <div className="relative aspect-[4/3] overflow-hidden bg-scrapbook-bg rounded-xs">
               <img
-                src="/memories/star/Fav pic of us.jpg"
+                src="/memories/star/fav-pic-of-us.jpg"
                 alt="Kullachi memory"
                 className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
                 style={{ objectPosition: 'center 25%' }}
@@ -80,7 +80,7 @@ export function Home() {
             </div>
             <div className="aspect-[4/3] overflow-hidden bg-scrapbook-bg rounded-xs">
               <img
-                src="/memories/star/First meet.jpg"
+                src="/memories/star/first-meet.jpg"
                 alt="Special moment"
                 className="w-full h-full object-cover"
               />
@@ -98,7 +98,7 @@ export function Home() {
             </div>
             <div className="aspect-[4/3] overflow-hidden bg-scrapbook-bg rounded-xs">
               <img
-                src="/memories/star/2nd meet.jpg"
+                src="/memories/star/2nd-meet.jpg"
                 alt="Favorite place"
                 className="w-full h-full object-cover"
               />
