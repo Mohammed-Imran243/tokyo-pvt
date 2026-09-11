@@ -83,9 +83,6 @@ but whenever you open this, I hope you're smiling. 😏
 
 Idha en ways of showing love nu nenachikko.
 
-// Enakku love na enna nu kooda theriyama irundha enna,
-// adhula vizha vecha sooniya kaari nee. 😏
-
 Life namma rendu perayum enga kondu pogum nu enakku theriyadhu.
 Namma same-ah iruppoma,
 illa romba different-ah aayiduvoma nu kooda theriyadhu.
