@@ -5,7 +5,7 @@ export interface MemoryStats {
 
 export const memoryStats: MemoryStats = {
   photos: 9,
-  videos: 16,
+  videos: 18,
 };
 
 export interface GalleryItem {
@@ -46,4 +46,6 @@ export const galleryData: GalleryItem[] = [
   { id: "star-vid-14", type: "video", url: "/memories/star/vaena-macha-vaena.mp4", caption: "Vaena macha vaena 😂", date: "2026" },
   { id: "star-vid-15", type: "video", url: "/memories/star/sweat-giggle.mp4", caption: "😅🤭", date: "2026" },
   { id: "star-vid-16", type: "video", url: "/memories/star/peeking-eye.mp4", caption: "🫣", date: "2026" },
+  { id: "star-vid-17", type: "video", url: "/memories/star/bot-uh.mp4", caption: "Bot uh", date: "2026" },
+  { id: "star-vid-18", type: "video", url: "/memories/star/korangu.mp4", caption: "Korangu", date: "2026" },
 ];
